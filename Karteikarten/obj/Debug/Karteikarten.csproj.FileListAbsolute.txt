@@ -74,3 +74,4 @@ F:\Dev\C#\SQLite\karteikarten_localDB\Karteikarten\obj\Debug\Karteikarten.csproj
 F:\Dev\C#\SQLite\karteikarten_localDB\Karteikarten\obj\Debug\Karteikarten.csproj.CopyComplete
 F:\Dev\C#\SQLite\karteikarten_localDB\Karteikarten\obj\Debug\Karteikarten.exe
 F:\Dev\C#\SQLite\karteikarten_localDB\Karteikarten\obj\Debug\Karteikarten.pdb
+F:\Dev\C#\SQLite\karteikarten_localDB\Karteikarten\obj\Debug\Karteikarten.View.frmAdmin.resources
