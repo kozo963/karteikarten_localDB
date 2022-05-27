@@ -46,6 +46,7 @@
             this.cbThema_t = new System.Windows.Forms.ComboBox();
             this.txtThema = new System.Windows.Forms.TextBox();
             this.btnInsertThema = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.tabController.SuspendLayout();
             this.tabInsert.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAImg)).BeginInit();
@@ -157,6 +158,7 @@
             this.btnAImg.TabIndex = 19;
             this.btnAImg.Text = "Answer Image";
             this.btnAImg.UseVisualStyleBackColor = true;
+            this.btnAImg.Click += new System.EventHandler(this.btnAImg_Click);
             // 
             // pbAImg
             // 
@@ -192,6 +194,7 @@
             this.btnQImg.TabIndex = 15;
             this.btnQImg.Text = "Question Image";
             this.btnQImg.UseVisualStyleBackColor = true;
+            this.btnQImg.Click += new System.EventHandler(this.btnQImg_Click);
             // 
             // tabThema
             // 
@@ -233,11 +236,22 @@
             this.btnInsertThema.UseVisualStyleBackColor = true;
             this.btnInsertThema.Click += new System.EventHandler(this.btnInsertThema_Click);
             // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(16, 657);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.TabIndex = 1;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
             // frmAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.tabController);
             this.Name = "frmAdmin";
             this.Text = "frmAdmin";
@@ -272,5 +286,6 @@
         private System.Windows.Forms.ComboBox cbThema_t;
         private System.Windows.Forms.TextBox txtThema;
         private System.Windows.Forms.Button btnInsertThema;
+        private System.Windows.Forms.Button btnAdd;
     }
 }

@@ -24,5 +24,20 @@ namespace Karteikarten.Controller
         }
 
         //Karte
+        public static void AddKarte(karte karte)
+        {
+            EFController eFController = new EFController();
+            karte.t_id = 1;
+            eFController.karte.Add(karte);
+            eFController.SaveChanges();
+        }
+
+        public static int GetThemaIDByName(string name)
+        {
+            EFController eFController = new EFController();
+            return eFController.thema.Where(t => t.themaName == name).First().id;
+        }
+
+        
     }
 }

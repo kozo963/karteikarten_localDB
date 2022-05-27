@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Karteikarten.Model;
@@ -14,6 +15,8 @@ namespace Karteikarten.View
 {
     public partial class frmAdmin : Form
     {
+        string _imgPathQ;
+        string _imgPathA;
         public frmAdmin()
         {
             InitializeComponent();
@@ -50,6 +53,52 @@ namespace Karteikarten.View
             UpdateCBThema();
         }
 
+        private void btnQImg_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog o = new OpenFileDialog();
+            o.Filter = "Image Files(*.jgp; *.jpeg; *.png; *.jfif) | *.jpg; *.jpeg; *.png; *.jfif";
+            if (o.ShowDialog() == DialogResult.OK)
+            {
+                pbQImg.Image = new Bitmap(o.FileName);
+                _imgPathQ = Path.GetFullPath(o.FileName);
+            }
+        }
 
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            karte k = new karte();
+            //k.id = ? it's auto incremeant
+            k.qText = tbQTxt.Text;
+            k.qImg = FromImgPathToBinary(_imgPathQ);
+            k.aText = tbATxt.Text;
+            k.aImg = FromImgPathToBinary(_imgPathA);
+            k.t_id = SQLController.GetThemaIDByName(cbThema.Text);
+
+            SQLController.AddKarte(k);
+        }
+
+        private byte[] FromImgPathToBinary(string imgPath)
+        {
+            if(imgPath == null)
+                return null;
+            FileInfo fInfo = new FileInfo(imgPath);
+            
+            FileStream fs = new FileStream(imgPath, FileMode.Open, FileAccess.Read);
+            BinaryReader br = new BinaryReader(fs);
+
+            byte[] data = br.ReadBytes((int)fInfo.Length);
+            return data;
+        }
+
+        private void btnAImg_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog o = new OpenFileDialog();
+            o.Filter = "Image Files(*.jgp; *.jpeg; *.png; *.jfif) | *.jpg; *.jpeg; *.png; *.jfif";
+            if (o.ShowDialog() == DialogResult.OK)
+            {
+                pbQImg.Image = new Bitmap(o.FileName);
+                _imgPathA = Path.GetFullPath(o.FileName);
+            }
+        }
     }
 }
