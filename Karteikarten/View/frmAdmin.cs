@@ -118,7 +118,10 @@ namespace Karteikarten.View
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            frmWelcome frmWelcome = new frmWelcome();
+            frmWelcome.ShowDialog();
+            this.Close();
         }
     }
 }
