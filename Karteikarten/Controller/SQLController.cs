@@ -27,7 +27,7 @@ namespace Karteikarten.Controller
         public static void AddKarte(karte karte)
         {
             EFController eFController = new EFController();
-            karte.t_id = 1;
+            //karte.t_id = 1;
             eFController.karte.Add(karte);
             eFController.SaveChanges();
         }

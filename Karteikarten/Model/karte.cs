@@ -13,7 +13,7 @@ namespace Karteikarten.Model
         public byte[] qImg { get; set; }
         public string aText { get; set; }
         public byte[] aImg { get; set; }
-        public int t_id { get; set; }
+        public int themaid { get; set; }
         public virtual thema thema { get; set; }
     }
 }

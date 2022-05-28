@@ -63,16 +63,26 @@ namespace Karteikarten.View
                 _imgPathQ = Path.GetFullPath(o.FileName);
             }
         }
+        private void btnAImg_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog o = new OpenFileDialog();
+            o.Filter = "Image Files(*.jgp; *.jpeg; *.png; *.jfif) | *.jpg; *.jpeg; *.png; *.jfif";
+            if (o.ShowDialog() == DialogResult.OK)
+            {
+                pbAImg.Image = new Bitmap(o.FileName);
+                _imgPathA = Path.GetFullPath(o.FileName);
+            }
+        }
+
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             karte k = new karte();
-            //k.id = ? it's auto incremeant
             k.qText = tbQTxt.Text;
             k.qImg = FromImgPathToBinary(_imgPathQ);
             k.aText = tbATxt.Text;
             k.aImg = FromImgPathToBinary(_imgPathA);
-            k.t_id = SQLController.GetThemaIDByName(cbThema.Text);
+            k.themaid = SQLController.GetThemaIDByName(cbThema.Text);
 
             SQLController.AddKarte(k);
         }
@@ -90,15 +100,6 @@ namespace Karteikarten.View
             return data;
         }
 
-        private void btnAImg_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog o = new OpenFileDialog();
-            o.Filter = "Image Files(*.jgp; *.jpeg; *.png; *.jfif) | *.jpg; *.jpeg; *.png; *.jfif";
-            if (o.ShowDialog() == DialogResult.OK)
-            {
-                pbQImg.Image = new Bitmap(o.FileName);
-                _imgPathA = Path.GetFullPath(o.FileName);
-            }
-        }
+
     }
 }
