@@ -143,7 +143,7 @@
             this.Controls.Add(this.rbAll);
             this.Controls.Add(this.cbl);
             this.Name = "frmUserConfig";
-            this.Text = " ";
+            this.Text = "User Configurations";
             this.ResumeLayout(false);
             this.PerformLayout();
 

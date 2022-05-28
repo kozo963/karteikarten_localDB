@@ -65,7 +65,6 @@ F:\Dev\C#\SQLite\karteikarten_localDB\Karteikarten\bin\Debug\System.Memory.xml
 F:\Dev\C#\SQLite\karteikarten_localDB\Karteikarten\bin\Debug\System.Numerics.Vectors.xml
 F:\Dev\C#\SQLite\karteikarten_localDB\Karteikarten\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 F:\Dev\C#\SQLite\karteikarten_localDB\Karteikarten\bin\Debug\System.Threading.Tasks.Extensions.xml
-F:\Dev\C#\SQLite\karteikarten_localDB\Karteikarten\obj\Debug\Karteikarten.csproj.AssemblyReference.cache
 F:\Dev\C#\SQLite\karteikarten_localDB\Karteikarten\obj\Debug\Karteikarten.Properties.Resources.resources
 F:\Dev\C#\SQLite\karteikarten_localDB\Karteikarten\obj\Debug\Karteikarten.View.frmTest.resources
 F:\Dev\C#\SQLite\karteikarten_localDB\Karteikarten\obj\Debug\Karteikarten.csproj.GenerateResource.cache
@@ -76,7 +75,6 @@ F:\Dev\C#\SQLite\karteikarten_localDB\Karteikarten\obj\Debug\Karteikarten.pdb
 F:\Dev\C#\SQLite\karteikarten_localDB\Karteikarten\obj\Debug\Karteikarten.View.frmAdmin.resources
 F:\Dev\C#\SQLite\karteikarten_localDB\Karteikarten\bin\Debug\Microsoft.EntityFrameworkCore.Design.dll
 F:\Dev\C#\SQLite\karteikarten_localDB\Karteikarten\bin\Debug\Microsoft.EntityFrameworkCore.Design.xml
-F:\Dev\C#\SQLite\karteikarten_localDB\Karteikarten\obj\Debug\Karteikarten.csproj.SuggestedBindingRedirects.cache
 F:\Dev\C#\SQLite\karteikarten_localDB\Karteikarten\obj\Debug\Karteikarten.View.frmWelcome.resources
 F:\Dev\C#\SQLite\karteikarten_localDB\Karteikarten\obj\Debug\Karteikarten.View.frmUser.resources
 F:\Dev\C#\SQLite\karteikarten_localDB\Karteikarten\obj\Debug\Karteikarten.View.frmUserConfig.resources

@@ -16,7 +16,7 @@ namespace Karteikarten
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmUserConfig());
+            Application.Run(new frmWelcome());
         }
     }
 }

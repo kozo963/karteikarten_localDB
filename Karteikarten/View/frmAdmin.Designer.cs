@@ -268,7 +268,7 @@
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.tabController);
             this.Name = "frmAdmin";
-            this.Text = "frmAdmin";
+            this.Text = "Admin Panel";
             this.tabController.ResumeLayout(false);
             this.tabInsert.ResumeLayout(false);
             this.tabInsert.PerformLayout();
