@@ -10,26 +10,26 @@ using System.Windows.Forms;
 
 namespace Karteikarten.View
 {
-    public partial class frmWelcome : Form
+    public partial class frmUserConfig : Form
     {
-        public frmWelcome()
+        public frmUserConfig()
         {
             InitializeComponent();
         }
 
-        private void btnAdmin_Click(object sender, EventArgs e)
+        private void btnBack_Click(object sender, EventArgs e)
         {
             this.Hide();
-            frmAdmin frmAdmin = new frmAdmin();
-            frmAdmin.ShowDialog();
+            frmWelcome frmWelcome = new frmWelcome();
+            frmWelcome.ShowDialog();
             this.Close();
         }
 
-        private void btnUser_Click(object sender, EventArgs e)
+        private void btnNext_Click(object sender, EventArgs e)
         {
             this.Hide();
-            frmUserConfig frmUserConfig = new frmUserConfig();
-            frmUserConfig.ShowDialog();
+            frmUser frmUser = new frmUser();
+            frmUser.ShowDialog();
             this.Close();
         }
     }
