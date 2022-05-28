@@ -94,6 +94,10 @@ namespace Karteikarten.View
             {
                 SQLController.AddKarte(k);
                 MessageBox.Show("Karte has been added.");
+                tbQTxt.Text = "";
+                tbATxt.Text = "";
+                pbAImg.Image = null;
+                pbQImg.Image = null;
             }
             catch
             {
@@ -105,7 +109,7 @@ namespace Karteikarten.View
 
         private byte[] FromImgPathToBinary(string imgPath)
         {
-            if(imgPath == null)
+            if(imgPath == "")
                 return null;
             FileInfo fInfo = new FileInfo(imgPath);
             

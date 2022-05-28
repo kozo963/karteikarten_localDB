@@ -7,14 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Karteikarten.Model;
 
 namespace Karteikarten.View
 {
     public partial class frmUser : Form
     {
-        public frmUser()
+        public List<karte> _kartes = new List<karte>();
+        public frmUser(List<karte> kartes)
         {
             InitializeComponent();
+            _kartes = kartes;
         }
     }
 }
