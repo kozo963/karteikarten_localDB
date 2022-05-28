@@ -76,3 +76,4 @@ F:\Dev\C#\SQLite\karteikarten_localDB\Karteikarten\obj\Debug\Karteikarten.pdb
 F:\Dev\C#\SQLite\karteikarten_localDB\Karteikarten\obj\Debug\Karteikarten.View.frmAdmin.resources
 F:\Dev\C#\SQLite\karteikarten_localDB\Karteikarten\bin\Debug\Microsoft.EntityFrameworkCore.Design.dll
 F:\Dev\C#\SQLite\karteikarten_localDB\Karteikarten\bin\Debug\Microsoft.EntityFrameworkCore.Design.xml
+F:\Dev\C#\SQLite\karteikarten_localDB\Karteikarten\obj\Debug\Karteikarten.csproj.SuggestedBindingRedirects.cache

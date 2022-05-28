@@ -15,8 +15,8 @@ namespace Karteikarten.View
 {
     public partial class frmAdmin : Form
     {
-        string _imgPathQ;
-        string _imgPathA;
+        string _imgPathQ = "";
+        string _imgPathA = "";
         public frmAdmin()
         {
             InitializeComponent();
@@ -77,14 +77,30 @@ namespace Karteikarten.View
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            
+            if (tbQTxt.Text == "" && _imgPathQ == "" || tbATxt.Text == "" && _imgPathA == "" || cbThema.Text == "")
+            {
+                MessageBox.Show("Please Fill at least \n1 Question\n1 Answer\nSelect the Thema.");
+                return;
+            }
+
             karte k = new karte();
             k.qText = tbQTxt.Text;
             k.qImg = FromImgPathToBinary(_imgPathQ);
             k.aText = tbATxt.Text;
             k.aImg = FromImgPathToBinary(_imgPathA);
             k.themaid = SQLController.GetThemaIDByName(cbThema.Text);
+            try
+            {
+                SQLController.AddKarte(k);
+                MessageBox.Show("Karte has been added.");
+            }
+            catch
+            {
+                MessageBox.Show("Database Error");
+            }
+            
 
-            SQLController.AddKarte(k);
         }
 
         private byte[] FromImgPathToBinary(string imgPath)
@@ -100,6 +116,9 @@ namespace Karteikarten.View
             return data;
         }
 
+        private void btnBack_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }

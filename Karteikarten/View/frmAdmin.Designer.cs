@@ -47,6 +47,7 @@
             this.txtThema = new System.Windows.Forms.TextBox();
             this.btnInsertThema = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.btnBack = new System.Windows.Forms.Button();
             this.tabController.SuspendLayout();
             this.tabInsert.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAImg)).BeginInit();
@@ -238,19 +239,32 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(16, 657);
+            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.Location = new System.Drawing.Point(531, 653);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.Size = new System.Drawing.Size(182, 29);
             this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnBack
+            // 
+            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.Location = new System.Drawing.Point(12, 653);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(96, 29);
+            this.btnBack.TabIndex = 2;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // frmAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.tabController);
             this.Name = "frmAdmin";
@@ -287,5 +301,6 @@
         private System.Windows.Forms.TextBox txtThema;
         private System.Windows.Forms.Button btnInsertThema;
         private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnBack;
     }
 }
