@@ -42,7 +42,11 @@ namespace Karteikarten.Controller
 
             return themaHelpers;
         }
-
+        public static int GetThemaIDByName(string name)
+        {
+            EFController eFController = new EFController();
+            return eFController.thema.Where(t => t.themaName == name).First().id;
+        }
 
 
         //Karte
@@ -54,10 +58,11 @@ namespace Karteikarten.Controller
             eFController.SaveChanges();
         }
 
-        public static int GetThemaIDByName(string name)
+        public static void UpdateKarte(karte karte)
         {
             EFController eFController = new EFController();
-            return eFController.thema.Where(t => t.themaName == name).First().id;
+            eFController.Entry(karte).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            eFController.SaveChanges();
         }
 
         private static List<karte> GetAllKarte()
@@ -70,6 +75,13 @@ namespace Karteikarten.Controller
         {
             EFController eFController = new EFController();
             return eFController.karte.Where(x=> x.themaid == id).ToList();
+        }
+
+        internal static void DeleteKarte(karte karte)
+        {
+            EFController eFController = new EFController();
+            eFController.Entry(karte).State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
+            eFController.SaveChanges();
         }
     }
 }

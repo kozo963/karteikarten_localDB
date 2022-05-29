@@ -27,9 +27,11 @@ namespace Karteikarten.View
         {
             cbThema.Items.Clear();
             cbThema_t.Items.Clear();
+            cb_Thema_UD.Items.Clear();
 
             SQLController.GetThemas().ForEach(z => cbThema.Items.Add(z.themaName));
             SQLController.GetThemas().ForEach(z => cbThema_t.Items.Add(z.themaName));
+            SQLController.GetThemas().ForEach(z => cb_Thema_UD.Items.Add(z.themaName));
         }
 
         private void btnInsertThema_Click(object sender, EventArgs e)
@@ -98,6 +100,8 @@ namespace Karteikarten.View
                 tbATxt.Text = "";
                 pbAImg.Image = null;
                 pbQImg.Image = null;
+                _imgPathQ = "";
+                _imgPathA = "";
             }
             catch
             {
@@ -126,6 +130,151 @@ namespace Karteikarten.View
             frmWelcome frmWelcome = new frmWelcome();
             frmWelcome.ShowDialog();
             this.Close();
+        }
+
+        // UPDATE AND DELETE TAB
+        List<karte> _kartes = new List<karte>();
+        karte _currentKarte;
+        int _currentIndex;
+        private void cb_Thema_UD_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int themaID = SQLController.GetThemaIDByName(cb_Thema_UD.Text);
+            _kartes =  SQLController.GetKartesByThemaID(themaID);
+            if (_kartes.Count == 0)
+            {
+                MessageBox.Show("No Kartes in this Thema");
+                pbQImg_UD.Image = null;
+                tbQTxt_UD.Text = "";
+                pbAImg_UD.Image = null;
+                tbATxt_UD.Text = "";
+
+                lblCurrentKarte.Text = "0";
+                lblTotalKarte.Text = "0";
+
+                return;
+            }
+
+            _currentIndex = 0;
+            _currentKarte = _kartes.ElementAt(_currentIndex);
+            lblTotalKarte.Text = _kartes.Count.ToString();
+            lblCurrentKarte.Text = (_currentIndex + 1).ToString();
+            ShowKarte();
+        }
+
+        private void ShowKarte()
+        {
+            pbQImg_UD.Image = FromByteArrayToImage(_currentKarte.qImg);
+            tbQTxt_UD.Text = _currentKarte.qText;
+
+            pbAImg_UD.Image = FromByteArrayToImage(_currentKarte.aImg);
+            tbATxt_UD.Text = _currentKarte.aText;
+
+            lblCurrentKarte.Text = (_currentIndex + 1).ToString();
+        }
+
+        private Image FromByteArrayToImage(byte[] img)
+        {
+            if (img == null)
+                return null;
+
+            MemoryStream stream = new MemoryStream(img);
+            Image image = Image.FromStream(stream);
+            return image;
+        }
+
+        private void btnPreviousUD_Click(object sender, EventArgs e)
+        {
+            if (_kartes.Count == 0)
+                return;
+            if (_currentIndex == 0)
+            {
+                MessageBox.Show("this is the first Karte");
+                return;
+            }
+            _currentIndex--;
+            _currentKarte = _kartes.ElementAt(_currentIndex);
+            ShowKarte();
+        }
+
+        private void btnNextUD_Click(object sender, EventArgs e)
+        {
+            if (_kartes.Count == 0)
+                return;
+            if (_currentIndex == _kartes.Count - 1)
+            {
+                MessageBox.Show("this was last Karte");
+                return;
+            }
+            _currentIndex++;
+            _currentKarte = _kartes.ElementAt(_currentIndex);
+            ShowKarte();
+        }
+
+
+        private void btnUpdate_UD_Click(object sender, EventArgs e)
+        {
+            if (tbQTxt_UD.Text == "" && _imgPathQ == "" || tbATxt_UD.Text == "" && _imgPathA == "" || cb_Thema_UD.Text == "")
+            {
+                MessageBox.Show("Please Fill at least \n1 Question\n1 Answer");
+                return;
+            }
+
+            karte karte = new karte();
+            karte.id = _currentKarte.id;
+            karte.aText = tbATxt_UD.Text;
+            karte.qText = tbQTxt_UD.Text;
+            karte.aImg = FromImgPathToBinary(_imgPathA);
+            karte.qImg = FromImgPathToBinary(_imgPathQ);
+            karte.themaid = _currentKarte.themaid;
+
+            try
+            {
+                SQLController.UpdateKarte(karte);
+                MessageBox.Show("Karte has been updated");
+            }
+            catch
+            {
+                MessageBox.Show("Error while Updating");
+            }
+
+        }
+
+
+        //SPAGHETTI
+        private void btnQImg_UD_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog o = new OpenFileDialog();
+            o.Filter = "Image Files(*.jgp; *.jpeg; *.png; *.jfif) | *.jpg; *.jpeg; *.png; *.jfif";
+            if (o.ShowDialog() == DialogResult.OK)
+            {
+                pbQImg_UD.Image = new Bitmap(o.FileName);
+                _imgPathQ = Path.GetFullPath(o.FileName);
+            }
+        }
+
+        private void btnAImg_UD_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog o = new OpenFileDialog();
+            o.Filter = "Image Files(*.jgp; *.jpeg; *.png; *.jfif) | *.jpg; *.jpeg; *.png; *.jfif";
+            if (o.ShowDialog() == DialogResult.OK)
+            {
+                pbAImg_UD.Image = new Bitmap(o.FileName);
+                _imgPathA = Path.GetFullPath(o.FileName);
+            }
+        }
+
+        private void btnDelete_UD_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SQLController.DeleteKarte(_currentKarte);
+                MessageBox.Show("Karte has been Deleted");
+                cb_Thema_UD.SelectedIndex = cb_Thema_UD.Items.IndexOf(cb_Thema_UD.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Error while deleting Karte");
+            }
         }
     }
 }
