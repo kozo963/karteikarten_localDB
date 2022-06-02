@@ -270,11 +270,24 @@ namespace Karteikarten.View
                 SQLController.DeleteKarte(_currentKarte);
                 MessageBox.Show("Karte has been Deleted");
                 cb_Thema_UD.SelectedIndex = cb_Thema_UD.Items.IndexOf(cb_Thema_UD.Text);
+                cb_Thema_UD_SelectedIndexChanged(null,null);
             }
             catch
             {
                 MessageBox.Show("Error while deleting Karte");
             }
+        }
+
+        private void tabUpdateDelete_Enter(object sender, EventArgs e)
+        {
+            UpdateCBThema();
+            pbQImg_UD.Image = null;
+            tbQTxt_UD.Text = "";
+            pbAImg_UD.Image = null;
+            tbATxt_UD.Text = "";
+
+            lblCurrentKarte.Text = "0";
+            lblTotalKarte.Text = "0";
         }
     }
 }

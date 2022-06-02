@@ -47,7 +47,9 @@
             this.cbThema_t = new System.Windows.Forms.ComboBox();
             this.txtThema = new System.Windows.Forms.TextBox();
             this.btnInsertThema = new System.Windows.Forms.Button();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabUpdateDelete = new System.Windows.Forms.TabPage();
+            this.btnAImg_UD = new System.Windows.Forms.Button();
+            this.btnQImg_UD = new System.Windows.Forms.Button();
             this.lblCurrentKarte = new System.Windows.Forms.Label();
             this.lblTotalKarte = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -67,14 +69,12 @@
             this.tbQTxt_UD = new System.Windows.Forms.TextBox();
             this.pbQImg_UD = new System.Windows.Forms.PictureBox();
             this.btnBack = new System.Windows.Forms.Button();
-            this.btnAImg_UD = new System.Windows.Forms.Button();
-            this.btnQImg_UD = new System.Windows.Forms.Button();
             this.tabController.SuspendLayout();
             this.tabInsert.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbQImg)).BeginInit();
             this.tabThema.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.tabUpdateDelete.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAImg_UD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbQImg_UD)).BeginInit();
             this.SuspendLayout();
@@ -83,7 +83,7 @@
             // 
             this.tabController.Controls.Add(this.tabInsert);
             this.tabController.Controls.Add(this.tabThema);
-            this.tabController.Controls.Add(this.tabPage1);
+            this.tabController.Controls.Add(this.tabUpdateDelete);
             this.tabController.ItemSize = new System.Drawing.Size(10, 18);
             this.tabController.Location = new System.Drawing.Point(12, 12);
             this.tabController.Name = "tabController";
@@ -274,35 +274,56 @@
             this.btnInsertThema.UseVisualStyleBackColor = true;
             this.btnInsertThema.Click += new System.EventHandler(this.btnInsertThema_Click);
             // 
-            // tabPage1
+            // tabUpdateDelete
             // 
-            this.tabPage1.Controls.Add(this.btnAImg_UD);
-            this.tabPage1.Controls.Add(this.btnQImg_UD);
-            this.tabPage1.Controls.Add(this.lblCurrentKarte);
-            this.tabPage1.Controls.Add(this.lblTotalKarte);
-            this.tabPage1.Controls.Add(this.label11);
-            this.tabPage1.Controls.Add(this.label12);
-            this.tabPage1.Controls.Add(this.btnUpdate_UD);
-            this.tabPage1.Controls.Add(this.btnDelete_UD);
-            this.tabPage1.Controls.Add(this.btnPreviousUD);
-            this.tabPage1.Controls.Add(this.btnNextUD);
-            this.tabPage1.Controls.Add(this.label10);
-            this.tabPage1.Controls.Add(this.cb_Thema_UD);
-            this.tabPage1.Controls.Add(this.label6);
-            this.tabPage1.Controls.Add(this.label7);
-            this.tabPage1.Controls.Add(this.label8);
-            this.tabPage1.Controls.Add(this.label9);
-            this.tabPage1.Controls.Add(this.tbATxt_UD);
-            this.tabPage1.Controls.Add(this.pbAImg_UD);
-            this.tabPage1.Controls.Add(this.tbQTxt_UD);
-            this.tabPage1.Controls.Add(this.pbQImg_UD);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1232, 613);
-            this.tabPage1.TabIndex = 2;
-            this.tabPage1.Text = "Karte: Update/Delete";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabUpdateDelete.Controls.Add(this.btnAImg_UD);
+            this.tabUpdateDelete.Controls.Add(this.btnQImg_UD);
+            this.tabUpdateDelete.Controls.Add(this.lblCurrentKarte);
+            this.tabUpdateDelete.Controls.Add(this.lblTotalKarte);
+            this.tabUpdateDelete.Controls.Add(this.label11);
+            this.tabUpdateDelete.Controls.Add(this.label12);
+            this.tabUpdateDelete.Controls.Add(this.btnUpdate_UD);
+            this.tabUpdateDelete.Controls.Add(this.btnDelete_UD);
+            this.tabUpdateDelete.Controls.Add(this.btnPreviousUD);
+            this.tabUpdateDelete.Controls.Add(this.btnNextUD);
+            this.tabUpdateDelete.Controls.Add(this.label10);
+            this.tabUpdateDelete.Controls.Add(this.cb_Thema_UD);
+            this.tabUpdateDelete.Controls.Add(this.label6);
+            this.tabUpdateDelete.Controls.Add(this.label7);
+            this.tabUpdateDelete.Controls.Add(this.label8);
+            this.tabUpdateDelete.Controls.Add(this.label9);
+            this.tabUpdateDelete.Controls.Add(this.tbATxt_UD);
+            this.tabUpdateDelete.Controls.Add(this.pbAImg_UD);
+            this.tabUpdateDelete.Controls.Add(this.tbQTxt_UD);
+            this.tabUpdateDelete.Controls.Add(this.pbQImg_UD);
+            this.tabUpdateDelete.Location = new System.Drawing.Point(4, 22);
+            this.tabUpdateDelete.Name = "tabUpdateDelete";
+            this.tabUpdateDelete.Padding = new System.Windows.Forms.Padding(3);
+            this.tabUpdateDelete.Size = new System.Drawing.Size(1232, 613);
+            this.tabUpdateDelete.TabIndex = 2;
+            this.tabUpdateDelete.Text = "Karte: Update/Delete";
+            this.tabUpdateDelete.UseVisualStyleBackColor = true;
+            this.tabUpdateDelete.Enter += new System.EventHandler(this.tabUpdateDelete_Enter);
+            // 
+            // btnAImg_UD
+            // 
+            this.btnAImg_UD.Location = new System.Drawing.Point(6, 306);
+            this.btnAImg_UD.Name = "btnAImg_UD";
+            this.btnAImg_UD.Size = new System.Drawing.Size(92, 23);
+            this.btnAImg_UD.TabIndex = 53;
+            this.btnAImg_UD.Text = "Answer Image";
+            this.btnAImg_UD.UseVisualStyleBackColor = true;
+            this.btnAImg_UD.Click += new System.EventHandler(this.btnAImg_UD_Click);
+            // 
+            // btnQImg_UD
+            // 
+            this.btnQImg_UD.Location = new System.Drawing.Point(3, 6);
+            this.btnQImg_UD.Name = "btnQImg_UD";
+            this.btnQImg_UD.Size = new System.Drawing.Size(95, 25);
+            this.btnQImg_UD.TabIndex = 52;
+            this.btnQImg_UD.Text = "Question Image";
+            this.btnQImg_UD.UseVisualStyleBackColor = true;
+            this.btnQImg_UD.Click += new System.EventHandler(this.btnQImg_UD_Click);
             // 
             // lblCurrentKarte
             // 
@@ -488,26 +509,6 @@
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
-            // btnAImg_UD
-            // 
-            this.btnAImg_UD.Location = new System.Drawing.Point(6, 306);
-            this.btnAImg_UD.Name = "btnAImg_UD";
-            this.btnAImg_UD.Size = new System.Drawing.Size(92, 23);
-            this.btnAImg_UD.TabIndex = 53;
-            this.btnAImg_UD.Text = "Answer Image";
-            this.btnAImg_UD.UseVisualStyleBackColor = true;
-            this.btnAImg_UD.Click += new System.EventHandler(this.btnAImg_UD_Click);
-            // 
-            // btnQImg_UD
-            // 
-            this.btnQImg_UD.Location = new System.Drawing.Point(3, 6);
-            this.btnQImg_UD.Name = "btnQImg_UD";
-            this.btnQImg_UD.Size = new System.Drawing.Size(95, 25);
-            this.btnQImg_UD.TabIndex = 52;
-            this.btnQImg_UD.Text = "Question Image";
-            this.btnQImg_UD.UseVisualStyleBackColor = true;
-            this.btnQImg_UD.Click += new System.EventHandler(this.btnQImg_UD_Click);
-            // 
             // frmAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -524,8 +525,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbQImg)).EndInit();
             this.tabThema.ResumeLayout(false);
             this.tabThema.PerformLayout();
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.tabUpdateDelete.ResumeLayout(false);
+            this.tabUpdateDelete.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAImg_UD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbQImg_UD)).EndInit();
             this.ResumeLayout(false);
@@ -553,7 +554,7 @@
         private System.Windows.Forms.TextBox txtThema;
         private System.Windows.Forms.Button btnInsertThema;
         private System.Windows.Forms.Button btnBack;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabUpdateDelete;
         private System.Windows.Forms.Button btnUpdate_UD;
         private System.Windows.Forms.Button btnDelete_UD;
         private System.Windows.Forms.Button btnPreviousUD;
