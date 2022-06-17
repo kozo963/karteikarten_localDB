@@ -83,5 +83,22 @@ namespace Karteikarten.Controller
             eFController.Entry(karte).State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
             eFController.SaveChanges();
         }
+
+        internal static void UpdateThema(thema t)
+        {
+            EFController eFController = new EFController();
+            eFController.Entry(t).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            eFController.SaveChanges();
+        }
+
+        internal static void DeleteThemaWithKarte(thema t)
+        {
+            EFController eFController = new EFController();
+
+            List<karte> kartes = GetAllKarte().Where(x => x.themaid == t.id).ToList();
+            kartes.ForEach(k => DeleteKarte(k));
+            eFController.Entry(t).State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
+            eFController.SaveChanges(true);
+        }
     }
 }

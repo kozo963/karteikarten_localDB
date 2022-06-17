@@ -289,5 +289,47 @@ namespace Karteikarten.View
             lblCurrentKarte.Text = "0";
             lblTotalKarte.Text = "0";
         }
+
+
+        private void btnUpdate_t_Click(object sender, EventArgs e)
+        {
+
+            if (txtThema.Text == "" || cbThema_t.Text == "")
+            {
+                MessageBox.Show("Please select Thema and Enter the new Name to update.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            DialogResult update = MessageBox.Show("Do you really want to update Thema Name?", "Update", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (update == DialogResult.Yes)
+            {
+                //Update
+
+                thema t = SQLController.GetThemas().Where(x => x.themaName == cbThema_t.Text).First();
+                t.themaName = txtThema.Text;
+                SQLController.UpdateThema(t);
+                UpdateCBThema();
+                txtThema.Text = "";
+                MessageBox.Show("Thema name has been Updated");
+            }
+        }
+
+        private void btnDelete_t_Click(object sender, EventArgs e)
+        {
+            if (cbThema_t.Text == "")
+            {
+                MessageBox.Show("Please select Thema to Delete.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            DialogResult delete = MessageBox.Show($"Do you really want to Delete the Thema {cbThema_t.Text} include Kartes that belong to this Thema?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+            if (delete == DialogResult.Yes)
+            {
+                thema t = SQLController.GetThemas().Where(x => x.themaName == cbThema_t.Text).First();
+                SQLController.DeleteThemaWithKarte(t);
+                UpdateCBThema();
+                MessageBox.Show("Thema has been Deleted");
+            }
+        }
     }
 }

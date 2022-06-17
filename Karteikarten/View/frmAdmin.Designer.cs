@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdmin));
             this.tabController = new System.Windows.Forms.TabControl();
             this.tabInsert = new System.Windows.Forms.TabPage();
             this.label5 = new System.Windows.Forms.Label();
@@ -44,6 +45,8 @@
             this.pbQImg = new System.Windows.Forms.PictureBox();
             this.btnQImg = new System.Windows.Forms.Button();
             this.tabThema = new System.Windows.Forms.TabPage();
+            this.btnDelete_t = new System.Windows.Forms.Button();
+            this.btnUpdate_t = new System.Windows.Forms.Button();
             this.cbThema_t = new System.Windows.Forms.ComboBox();
             this.txtThema = new System.Windows.Forms.TextBox();
             this.btnInsertThema = new System.Windows.Forms.Button();
@@ -236,6 +239,8 @@
             // 
             // tabThema
             // 
+            this.tabThema.Controls.Add(this.btnDelete_t);
+            this.tabThema.Controls.Add(this.btnUpdate_t);
             this.tabThema.Controls.Add(this.cbThema_t);
             this.tabThema.Controls.Add(this.txtThema);
             this.tabThema.Controls.Add(this.btnInsertThema);
@@ -246,6 +251,26 @@
             this.tabThema.TabIndex = 1;
             this.tabThema.Text = "Thema";
             this.tabThema.UseVisualStyleBackColor = true;
+            // 
+            // btnDelete_t
+            // 
+            this.btnDelete_t.Location = new System.Drawing.Point(323, 321);
+            this.btnDelete_t.Name = "btnDelete_t";
+            this.btnDelete_t.Size = new System.Drawing.Size(106, 23);
+            this.btnDelete_t.TabIndex = 7;
+            this.btnDelete_t.Text = "Delete Thema";
+            this.btnDelete_t.UseVisualStyleBackColor = true;
+            this.btnDelete_t.Click += new System.EventHandler(this.btnDelete_t_Click);
+            // 
+            // btnUpdate_t
+            // 
+            this.btnUpdate_t.Location = new System.Drawing.Point(323, 292);
+            this.btnUpdate_t.Name = "btnUpdate_t";
+            this.btnUpdate_t.Size = new System.Drawing.Size(106, 23);
+            this.btnUpdate_t.TabIndex = 6;
+            this.btnUpdate_t.Text = "Update Thema";
+            this.btnUpdate_t.UseVisualStyleBackColor = true;
+            this.btnUpdate_t.Click += new System.EventHandler(this.btnUpdate_t_Click);
             // 
             // cbThema_t
             // 
@@ -516,6 +541,7 @@
             this.ClientSize = new System.Drawing.Size(1264, 689);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.tabController);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAdmin";
             this.Text = "Admin Panel";
             this.tabController.ResumeLayout(false);
@@ -576,5 +602,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button btnAImg_UD;
         private System.Windows.Forms.Button btnQImg_UD;
+        private System.Windows.Forms.Button btnDelete_t;
+        private System.Windows.Forms.Button btnUpdate_t;
     }
 }

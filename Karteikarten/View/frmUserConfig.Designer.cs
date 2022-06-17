@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUserConfig));
             this.cbl = new System.Windows.Forms.CheckedListBox();
             this.rbAll = new System.Windows.Forms.RadioButton();
             this.rbNum = new System.Windows.Forms.RadioButton();
@@ -142,6 +143,7 @@
             this.Controls.Add(this.rbNum);
             this.Controls.Add(this.rbAll);
             this.Controls.Add(this.cbl);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmUserConfig";
             this.Text = "User Configurations";
             this.ResumeLayout(false);

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmWelcome));
             this.btnAdmin = new System.Windows.Forms.Button();
             this.btnUser = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -73,6 +74,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnUser);
             this.Controls.Add(this.btnAdmin);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmWelcome";
             this.Text = "Karteikarten";
             this.ResumeLayout(false);
