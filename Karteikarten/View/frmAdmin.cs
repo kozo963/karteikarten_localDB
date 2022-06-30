@@ -36,20 +36,14 @@ namespace Karteikarten.View
 
         private void btnInsertThema_Click(object sender, EventArgs e)
         {
-            /* To recap
-            thema t = new thema();
-            // t.id =  ("IT IS AUTO INCRMEANT SO WE DON'T GIVE ID")
-            t.themaName = txtThema.Text;
-            SQLController.InsertThema(t);
-            */
             if (txtThema.Text != "")
             {
                 SQLController.InsertThema(new thema() { themaName = txtThema.Text });
-                MessageBox.Show("New Thema has been Added");
+                MessageBox.Show("New Thema has been Added", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show("Please Enter Thema Name");
+                MessageBox.Show("Please Enter Thema Name", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             txtThema.Text = "";
             UpdateCBThema();
@@ -82,7 +76,7 @@ namespace Karteikarten.View
             
             if (tbQTxt.Text == "" && _imgPathQ == "" || tbATxt.Text == "" && _imgPathA == "" || cbThema.Text == "")
             {
-                MessageBox.Show("Please Fill at least \n1 Question\n1 Answer\nSelect the Thema.");
+                MessageBox.Show("Please Fill at least \n1 Question\n1 Answer\nSelect the Thema.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -105,7 +99,7 @@ namespace Karteikarten.View
             }
             catch
             {
-                MessageBox.Show("Database Error");
+                MessageBox.Show("Error while Adding Karte to Database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
 
@@ -142,7 +136,7 @@ namespace Karteikarten.View
             _kartes =  SQLController.GetKartesByThemaID(themaID);
             if (_kartes.Count == 0)
             {
-                MessageBox.Show("No Kartes in this Thema");
+                MessageBox.Show("No Kartes in this Thema", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 pbQImg_UD.Image = null;
                 tbQTxt_UD.Text = "";
                 pbAImg_UD.Image = null;
@@ -188,7 +182,7 @@ namespace Karteikarten.View
                 return;
             if (_currentIndex == 0)
             {
-                MessageBox.Show("this is the first Karte");
+                MessageBox.Show("this is the first Karte", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             _currentIndex--;
@@ -202,7 +196,7 @@ namespace Karteikarten.View
                 return;
             if (_currentIndex == _kartes.Count - 1)
             {
-                MessageBox.Show("this was last Karte");
+                MessageBox.Show("this was last Karte", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             _currentIndex++;
@@ -215,7 +209,7 @@ namespace Karteikarten.View
         {
             if (tbQTxt_UD.Text == "" && _imgPathQ == "" || tbATxt_UD.Text == "" && _imgPathA == "" || cb_Thema_UD.Text == "")
             {
-                MessageBox.Show("Please Fill at least \n1 Question\n1 Answer");
+                MessageBox.Show("Please Fill at least \n1 Question\n1 Answer", "Info", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -230,11 +224,11 @@ namespace Karteikarten.View
             try
             {
                 SQLController.UpdateKarte(karte);
-                MessageBox.Show("Karte has been updated");
+                MessageBox.Show("Karte has been updated", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch
             {
-                MessageBox.Show("Error while Updating");
+                MessageBox.Show("Error while Updating", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -268,7 +262,7 @@ namespace Karteikarten.View
             try
             {
                 SQLController.DeleteKarte(_currentKarte);
-                MessageBox.Show("Karte has been Deleted");
+                MessageBox.Show("Karte has been Deleted", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 cb_Thema_UD.SelectedIndex = cb_Thema_UD.Items.IndexOf(cb_Thema_UD.Text);
                 cb_Thema_UD_SelectedIndexChanged(null,null);
             }
@@ -310,7 +304,7 @@ namespace Karteikarten.View
                 SQLController.UpdateThema(t);
                 UpdateCBThema();
                 txtThema.Text = "";
-                MessageBox.Show("Thema name has been Updated");
+                MessageBox.Show("Thema name has been Updated","Info",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
         }
 
@@ -328,7 +322,7 @@ namespace Karteikarten.View
                 thema t = SQLController.GetThemas().Where(x => x.themaName == cbThema_t.Text).First();
                 SQLController.DeleteThemaWithKarte(t);
                 UpdateCBThema();
-                MessageBox.Show("Thema has been Deleted");
+                MessageBox.Show("Thema has been Deleted", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

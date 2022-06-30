@@ -60,7 +60,7 @@ namespace Karteikarten.View
                     }
                     catch
                     {
-                        MessageBox.Show("Please Enter only Digits [0-9].");
+                        MessageBox.Show("Please Enter only Digits [0-9].", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                 }
@@ -68,11 +68,14 @@ namespace Karteikarten.View
 
                 List<karte> kartes = GetKartes(totalQuestions);
 
-
                 this.Hide();
                 frmUser frmUser = new frmUser(kartes);
                 frmUser.ShowDialog();
                 this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Please Select Thema","Error",MessageBoxButtons.OK);
             }
         }
 

@@ -92,7 +92,7 @@ namespace Karteikarten.View
         {
             if (_currentKarteNum == _kartes.Count - 1)
             {
-                MessageBox.Show("Game Done");
+                MessageBox.Show("Game Done", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             _currentKarteNum++;
